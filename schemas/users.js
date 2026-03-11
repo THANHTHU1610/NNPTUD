@@ -1,0 +1,46 @@
+let mongoose = require("mongoose");
+let usersSchema = mongoose.Schema(
+  {
+    username: {
+      type: String,
+      required: [true, "username khong duoc rong"],
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: [true, "password khong duoc rong"],
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    fullName: {
+      type: String,
+      default: "",
+    },
+    avatarUrl: {
+      type: [String],
+      default: ["https://i.sstatic.net/l60Hf.png&quot"],
+    },
+    status: {
+      type: Boolean,
+      default: false,
+    },
+    role: {
+      type: mongoose.Types.ObjectId,
+      ref: "role",
+      required: true,
+        },
+    
+    loginCount: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+module.exports = new mongoose.model("user", usersSchema);
