@@ -39,7 +39,7 @@ const userSchema = new mongoose.Schema(
     role: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "role",
-      required: true
+      required: false
     },
 
     loginCount: {
