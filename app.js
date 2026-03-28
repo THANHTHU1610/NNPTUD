@@ -7,6 +7,11 @@ let mongoose = require("mongoose");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+<<<<<<< HEAD
+=======
+// Trong app.js
+var inventoryRouter = require("./routes/inventories");
+>>>>>>> 59da6ab0a490567b8d59e52fac75788fd9a327c8
 
 var app = express();
 
@@ -27,6 +32,7 @@ app.use("/api/v1/roles", require("./routes/roles"));
 app.use("/api/v1/products", require("./routes/products"));
 app.use("/api/v1/categories", require("./routes/categories"));
 app.use("/api/v1/auth", require("./routes/auth"));
+<<<<<<< HEAD
 app.use("/api/v1/carts", require("./routes/cart"));
 app.use("/api/v1/upload", require("./routes/upload"));
 
@@ -35,6 +41,10 @@ const importUsers = require("./utils/importUser");
 // Đảm bảo file user.xlsx nằm cùng thư mục với file app.js
 importUsers("./user.xlsx");
 
+=======
+app.use("/api/v1/inventories", inventoryRouter);
+
+>>>>>>> 59da6ab0a490567b8d59e52fac75788fd9a327c8
 mongoose.connect("mongodb://localhost:27017/NNPTUD-C4");
 mongoose.connection.on("connected", function () {
   console.log("connected");
@@ -58,7 +68,11 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
+<<<<<<< HEAD
   res.send(err.message);
+=======
+  res.render("error");
+>>>>>>> 59da6ab0a490567b8d59e52fac75788fd9a327c8
 });
 
 module.exports = app;
